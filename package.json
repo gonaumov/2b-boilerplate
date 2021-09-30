@@ -4,9 +4,17 @@
   "description": "_We're looking at your programming ability. It must not only work, it should be maintainable._",
   "main": "index.js",
   "scripts": {
+    "prestart": "echo 'Creating portfolio ...'",
     "start": "node index.js",
+    "poststart": "echo 'This is the resultant portfolio. Please check data/portfolionode.csv.'",
+    "preportfolio": "echo 'Creating portfolio ...'",
+    "portfolio": "LC_NUMERIC=\"C\" && awk -f portfolio-creator.awk data/transactions.csv > data/portfolio.csv && cat data/portfolio.csv",
+    "postportfolio": "echo 'This is the resultant portfolio. Please check data/transactions.csv.'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.0.0"
+  }
 }

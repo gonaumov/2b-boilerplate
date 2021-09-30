@@ -1,30 +1,97 @@
-## Question 1 - Programming
-_We're looking at your programming ability. It must not only work, it should be maintainable._
-
-Let us assume you are a crypto investor. You have made transactions over a period of time which is logged in a CSV file at the [data directory](https://raw.githubusercontent.com/Propine/2b-boilerplate/master/data/transactions.csv). Write a command line program that returns the latest portfolio value per token in USD
-
-The program should be ran like this
+## Description 
+ I would implement the task with TypeScript, but I did it in JavaScript 
+ because the starting file - index.js was a JavaScript file. 
+ I am using [**readline**](https://nodejs.org/api/readline.html) because it 
+ supports passing of custom input stream and has **line** event which is useful if we want to read
+ a big file line by line. We shouldn't read big files synchronously. There can be 
+ memory and performance issues. For making http requests I am using [**node-fetch**](https://www.npmjs.com/package/node-fetch).
+ Unfortunately, I had to install version 2 because newer versions do not support require. node-fetch was converted to be an ESM 
+ only package in version 3.0.0-beta.They recommended us to stay on v2 which is built with CommonJS. I decided to use this one, otherwise I would have wasted a lot more time. If necessary, I can think of a better solution.
+ After calculation we get exchange rates from cryptocompare only for the token types 
+ which we need, and we do one request only. For csv parsing I would use library like [**csv-parse**](https://www.npmjs.com/package/csv-parse) but I believe
+ this would be not good for such task.  Before you run the code you need to execute 
+ ```
+ npm install
+ ```
+ or 
+ ```
+ npm i 
+ ```
+ which is shorter. When you execute 
+ ```
+ npm start 
+ ```
+ or 
+```
+ npm run start
+```
+ The script will report the start of creating of portfolio process, 
+ report the portfolio and create .csv file with the portfolio located
+ at
+```
+.
+└── data
+    └── portfolionode.csv
+```
+The output will look like this: 
 
 ```
-npm run start
+
+> 2b-boilerplate@1.0.0 prestart
+> echo 'Creating portfolio ...'
+
+Creating portfolio ...
+
+> 2b-boilerplate@1.0.0 start
+> node index.js
+
+token,amount,portfolio_value_in_usd
+BTC,199701.88,8335081156.39
+ETH,150347.70,431370106.73
+XRP,150277.29,139833.02
+
+
+> 2b-boilerplate@1.0.0 poststart
+> echo 'This is the resultant portfolio. Please check data/portfolionode.csv.'
+
+This is the resultant portfolio. Please check data/portfolionode.csv.
 ```
 
-On running, it should return the latest portfolio value per token in USD
+ Just for fun I did Bash/AWK version too. As you can see AWK is superior when there is need to 
+ be parsed tabular data. This version is not platform independent. It will work only in
+ *NIX compatible system - Linux/Mac or under Linux terminal emulators like Gitbash.
+ This version can be run with
+```
+npm run portfolio
+```
+ and will behave exactly in the same way like the clear nodejs version. It will report the start of creating of portfolio process,
+ report the portfolio and create .csv file with the portfolio located
+ at
 
-The CSV file has the following columns
- - timestamp: Integer number of seconds since the Epoch
- - transaction_type: Either a DEPOSIT or a WITHDRAWAL
- - token: The token symbol
- - amount: The amount transacted
+```
+.
+└── data
+    └── portfolio.csv
+```
+The output will look like this:
+```
 
-Portfolio means the balance of the token where you need to add deposits and subtract withdrawals. You may obtain the exchange rates from [cryptocompare](https://min-api.cryptocompare.com/documentation) where the API is free. You should write it in Node.js as our main stack is in Javascript/Typescript and we need to assess your proficiency.
+> 2b-boilerplate@1.0.0 preportfolio
+> echo 'Creating portfolio ...'
 
+Creating portfolio ...
 
-## Submission
+> 2b-boilerplate@1.0.0 portfolio
+> LC_NUMERIC="C" && awk -f portfolio-creator.awk data/transactions.csv > data/portfolio.csv && cat data/portfolio.csv
 
-Please take no more than 2 hours to finish. We do not track time, hence you can start and end at your own time. Your answers should comprise of the following
+token,amount,portfolio_value_in_usd
+BTC,39851.199,1663189394.299
+ETH,30572.310,87682912.973
+XRP,29560.413,27565.085
 
-  - Source code that you used for deriving the results
-  - README that explains various design decisions that you took.
+> 2b-boilerplate@1.0.0 postportfolio
+> echo 'This is the resultant portfolio. Please check data/transactions.csv.'
 
-Commit your answers in a private Github repository(it's free), please do not fork as other candidates will see your answers. Add Kyle(kyled7) as a collaborator. Inform us that it is done via email.
+This is the resultant portfolio. Please check data/transactions.csv.
+
+```
