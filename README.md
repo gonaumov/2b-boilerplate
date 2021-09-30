@@ -92,7 +92,7 @@ XRP,29560.413,27565.085
 > 2b-boilerplate@1.0.0 postportfolio
 > echo 'This is the resultant portfolio. Please check data/transactions.csv.'
 
-This is the resultant portfolio. Please check data/transactions.csv.
+This is the resultant portfolio. Please check data/portfolio.csv.
 
 ```
 
