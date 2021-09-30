@@ -95,3 +95,5 @@ XRP,29560.413,27565.085
 This is the resultant portfolio. Please check data/transactions.csv.
 
 ```
+
+I have divided the logic into three functions in order to make the code shorter and easier to maintain. 
