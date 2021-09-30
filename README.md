@@ -97,3 +97,5 @@ This is the resultant portfolio. Please check data/portfolio.csv.
 ```
 
 I have divided the logic into three functions in order to make the code shorter and easier to maintain. 
+I recorded a little demo which you can watch [here](https://www.tiktok.com/@georgenaumov915/video/7013697248865324293).
+It displays only how the task works. There is no visible code. If there is need I will remove it. 
