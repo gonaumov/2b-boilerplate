@@ -99,3 +99,13 @@ This is the resultant portfolio. Please check data/portfolio.csv.
 I have divided the logic into three functions in order to make the code shorter and easier to maintain. 
 I recorded a little demo which you can watch [here](https://www.tiktok.com/@georgenaumov915/video/7013697248865324293).
 It displays only how the task works. There is no visible code. If there is need I will remove it. 
+
+### A note about repository 
+
+Because I wanted to keep the current commits, but to not fork the repository I did the following:
+1. Created a private repo with name 2b-boilerplate.
+2. I did something like this:
+```
+git clone https://github.com/Propine/2b-boilerplate.git && cd 2b-boilerplate && git remote remove origin && git remote add origin https://github.com/gonaumov/2b-boilerplate.git
+```
+After that I just worked with this new origin.
