@@ -7,7 +7,7 @@
  memory and performance issues. For making http requests I am using [**node-fetch**](https://www.npmjs.com/package/node-fetch).
  Unfortunately, I had to install version 2 because newer versions do not support require. node-fetch was converted to be an ESM 
  only package in version 3.0.0-beta.They recommended us to stay on v2 which is built with CommonJS. I decided to use this one, otherwise I would have wasted a lot more time. If necessary, I can think of a better solution.
- After calculation we get exchange rates from cryptocompare only for the token types 
+ After calculation, we get exchange rates from cryptocompare only for the token types 
  which we need, and we do one request only. For csv parsing I would use library like [**csv-parse**](https://www.npmjs.com/package/csv-parse) but I believe
  this would be not good for such task.  Before you run the code you need to execute 
  ```
